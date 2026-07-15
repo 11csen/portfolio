@@ -82,8 +82,18 @@ class Protein:
 
 
 def _read_raw_dataset() -> dict[str, Any]:
-    """Read and parse the bundled ``proteins.json`` resource."""
-    resource = resources.files("protein_of_the_day.data").joinpath("proteins.json")
+    """Read and parse the bundled ``proteins.json`` resource.
+
+    The file is resolved relative to the ``protein_of_the_day`` package (which
+    has an ``__init__``) rather than the ``data`` directory. On Python 3.9,
+    ``importlib.resources.files`` raises ``TypeError`` for a directory without
+    an ``__init__`` because it is treated as a namespace package with no
+    ``__spec__.origin``; going through the real package and chaining single-arg
+    ``joinpath`` calls avoids that and works on 3.9 through 3.12.
+    """
+    resource = (
+        resources.files("protein_of_the_day").joinpath("data").joinpath("proteins.json")
+    )
     with resource.open("r", encoding="utf-8") as handle:
         return json.load(handle)
 
