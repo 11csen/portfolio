@@ -1,0 +1,248 @@
+:root {
+  color-scheme: light dark;
+  --bg: #f4f6fb;
+  --bg-elev: #ffffff;
+  --fg: #1a2233;
+  --fg-muted: #5b6577;
+  --accent: #2f6df6;
+  --accent-soft: #e5edff;
+  --border: #e2e6ef;
+  --shadow: 0 18px 45px -22px rgba(20, 33, 61, 0.45);
+  --radius: 18px;
+  --media-bg: #eef2fb;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #0e1220;
+    --bg-elev: #171d2e;
+    --fg: #e8ecf6;
+    --fg-muted: #9aa5bd;
+    --accent: #6f9bff;
+    --accent-soft: #1f2a44;
+    --border: #262d42;
+    --shadow: 0 20px 50px -25px rgba(0, 0, 0, 0.75);
+    --media-bg: #101524;
+  }
+}
+
+* { box-sizing: border-box; }
+
+html, body { height: 100%; }
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  background: var(--bg);
+  color: var(--fg);
+  line-height: 1.6;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+a { color: var(--accent); }
+
+.site-header {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 900px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 22px 20px 8px;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 700;
+  font-size: 1.15rem;
+  letter-spacing: -0.01em;
+}
+
+.brand-mark { font-size: 1.4rem; }
+
+.date-nav {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.nav-btn {
+  font: inherit;
+  cursor: pointer;
+  border: 1px solid var(--border);
+  background: var(--bg-elev);
+  color: var(--fg);
+  border-radius: 10px;
+  width: 38px;
+  height: 38px;
+  font-size: 1.1rem;
+  line-height: 1;
+  transition: border-color 0.15s ease, background 0.15s ease;
+}
+
+.nav-btn:hover { border-color: var(--accent); }
+.nav-btn:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+.nav-btn.text-btn { width: auto; padding: 0 14px; font-size: 0.92rem; }
+
+.date-picker {
+  font: inherit;
+  border: 1px solid var(--border);
+  background: var(--bg-elev);
+  color: var(--fg);
+  border-radius: 10px;
+  padding: 7px 10px;
+}
+
+.app {
+  flex: 1;
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.status {
+  text-align: center;
+  color: var(--fg-muted);
+  padding: 60px 20px;
+}
+
+.status.error { color: #d1435b; }
+
+.card {
+  background: var(--bg-elev);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  overflow: hidden;
+  display: grid;
+  grid-template-columns: 1fr;
+  animation: rise 0.35s ease both;
+}
+
+@media (min-width: 720px) {
+  .card { grid-template-columns: 320px 1fr; }
+}
+
+@keyframes rise {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .card { animation: none; }
+}
+
+.card-media {
+  position: relative;
+  background: var(--media-bg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 240px;
+  border-bottom: 1px solid var(--border);
+}
+
+@media (min-width: 720px) {
+  .card-media { border-bottom: none; border-right: 1px solid var(--border); }
+}
+
+.card-image {
+  width: 100%;
+  height: 100%;
+  max-height: 420px;
+  object-fit: contain;
+  padding: 18px;
+}
+
+.card-image-fallback {
+  font-size: 5rem;
+  opacity: 0.5;
+}
+
+.card-body { padding: 26px 28px 30px; }
+
+.card-date {
+  margin: 0 0 6px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: var(--accent);
+}
+
+.card-name {
+  margin: 0 0 6px;
+  font-size: 1.9rem;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+}
+
+.card-tagline {
+  margin: 0 0 20px;
+  font-style: italic;
+  color: var(--fg-muted);
+  font-size: 1.05rem;
+}
+
+.card-meta {
+  margin: 0 0 20px;
+  display: grid;
+  gap: 8px;
+}
+
+.card-meta .meta-row {
+  display: grid;
+  grid-template-columns: 108px 1fr;
+  gap: 10px;
+  font-size: 0.92rem;
+}
+
+.card-meta dt {
+  color: var(--fg-muted);
+  font-weight: 600;
+}
+
+.card-meta dd { margin: 0; }
+
+.card-description { margin: 0 0 16px; }
+
+.card-fun-fact {
+  margin: 0 0 22px;
+  background: var(--accent-soft);
+  border-radius: 12px;
+  padding: 14px 16px;
+  font-size: 0.96rem;
+}
+
+.card-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 18px;
+  margin: 0;
+  font-weight: 600;
+  font-size: 0.92rem;
+}
+
+.card-links a { text-decoration: none; }
+.card-links a:hover { text-decoration: underline; }
+
+.site-footer {
+  text-align: center;
+  color: var(--fg-muted);
+  font-size: 0.85rem;
+  padding: 26px 20px 34px;
+  max-width: 900px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.site-footer p { margin: 4px 0; }
+.footer-sub { opacity: 0.8; }
