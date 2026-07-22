@@ -22,7 +22,7 @@ from pathlib import Path
 
 REPO_ROOT = Path(__file__).resolve().parent.parent
 SRC = REPO_ROOT / "src"
-OUTPUT = REPO_ROOT / "docs" / "proteins.json"
+OUTPUT = REPO_ROOT / "docs" / "catalogue" / "proteins.json"
 
 # Fields the web app consumes. Links are derived client-side from ``pdb_id``.
 DISPLAY_FIELDS = (

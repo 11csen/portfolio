@@ -6,7 +6,7 @@ from pathlib import Path
 import pytest
 
 REPO_ROOT = Path(__file__).resolve().parent.parent
-DOCS_DATA = REPO_ROOT / "docs" / "proteins.json"
+DOCS_DATA = REPO_ROOT / "docs" / "catalogue" / "proteins.json"
 
 
 def _load_build_module():
