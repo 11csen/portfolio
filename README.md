@@ -79,16 +79,28 @@ print(xmas.name)
 
 ## Web app
 
-The `docs/` folder is a self-contained static site. It loads the catalogue, works out the day's
-protein in the browser (no build step, no server), lets you page through dates, and pulls the
-structure image and a couple of live facts from the RCSB PDB.
+The `docs/` folder is the GitHub Pages site. It contains:
+
+- **`index.html`** — a portfolio/CV site (design by Caroline S. E. Nielsen) that features the
+  Protein of the Day as its showcase project.
+- **`protein-of-the-day.html`** — a self-contained interactive 3D protein viewer (3Dmol.js +
+  AlphaFold DB) that resolves a different protein each day; embedded in the portfolio's Work section.
+- **`cv.html`** — a printable academic CV page.
+- **`catalogue/`** — the self-contained catalogue app generated from this Python package. It works
+  out the day's protein in the browser (no build step, no server), lets you page through dates, and
+  pulls the structure image and a couple of live facts from the RCSB PDB.
 
 Try it locally:
 
 ```bash
 python -m http.server --directory docs 8000
-# then open http://localhost:8000
+# portfolio:  http://localhost:8000
+# catalogue:  http://localhost:8000/catalogue/
 ```
+
+> The company logos on the portfolio use a typographic wordmark fallback until the real image files
+> (`a51-logo.png`, `synapse-logo.png`, `techbbq-logo.png`, `caroline-photo.png`) are added to
+> `docs/` — drop them in with those names and they appear automatically.
 
 ### Publishing on GitHub Pages
 
@@ -99,7 +111,8 @@ Two options:
    push to `main`.
 2. **From a branch:** in *Settings → Pages*, choose your default branch and the `/docs` folder.
 
-The page rotates the protein on its own each day, client-side, so there's nothing to rebuild daily.
+Both the portfolio's 3D viewer and the catalogue rotate the protein on their own each day,
+client-side, so there's nothing to rebuild daily.
 
 ## The data
 
