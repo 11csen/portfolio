@@ -1,34 +1,66 @@
 # 🧬 Protein of the Day
 
-A famous protein for every calendar day — the **same one for everyone, everywhere**, chosen
-deterministically from the date. Comes as a tiny zero-dependency Python library and CLI, plus a
-static web app you can host on GitHub Pages.
+This repository hosts two things:
 
-Structures and images are drawn from the [RCSB Protein Data Bank](https://www.rcsb.org).
+1. **A portfolio website** (`docs/`, deployed to GitHub Pages) whose flagship piece is an
+   interactive **Protein of the Day** — a live 3D protein viewer that resolves a different protein
+   each day from the AlphaFold database and renders it right in the browser.
+2. **A small, zero-dependency Python library and CLI** (`src/`) that picks a famous protein for any
+   calendar date from a curated, PDB-based catalogue. It's a standalone tool, handy for scripting.
+
+The website is the single source of truth for the daily protein on the live site; the Python
+library is an independent utility.
 
 ---
 
-## What it does
+## The website (`docs/`)
 
-- Picks one protein per day from a curated catalogue of 32 landmark proteins (myoglobin,
-  hemoglobin, GFP, CRISPR-era favourites, the SARS-CoV-2 spike, and more).
-- The choice is **deterministic**: the date maps to a protein with simple, portable arithmetic, so
-  the CLI and the website always agree, and the whole catalogue rotates before any protein repeats.
-- Works **fully offline** using bundled data. Optionally enriches output with live metadata
-  (experimental method, resolution, release date) from the RCSB PDB when a network is available.
+The `docs/` folder is the GitHub Pages site:
 
-## The selection algorithm
+- **`index.html`** — the portfolio/CV site (design by Caroline S. E. Nielsen). Its Work section
+  features the Protein of the Day.
+- **`protein-of-the-day.html`** — a self-contained interactive **3D protein viewer** (3Dmol.js +
+  AlphaFold DB). It picks a different protein each day (deterministically, by date) and renders the
+  live structure coloured by model confidence, with rotate and surface controls. Embedded in the
+  portfolio and openable full-screen.
+- **`cv.html`** — a printable academic CV page.
+
+Try it locally:
+
+```bash
+python -m http.server --directory docs 8000
+# then open http://localhost:8000
+```
+
+> The company logos on the portfolio use a typographic wordmark fallback until the real image files
+> (`a51-logo.png`, `synapse-logo.png`, `techbbq-logo.png`, `caroline-photo.png`) are added to
+> `docs/` — drop them in with those names and they appear automatically.
+
+### Publishing on GitHub Pages
+
+In *Settings → Pages*, set **Source** to **GitHub Actions**. The included
+[`pages.yml`](.github/workflows/pages.yml) workflow then deploys `docs/` on every push to `main`.
+The viewer rotates the protein on its own each day, client-side, so there's nothing to rebuild.
+
+---
+
+## The Python library & CLI (`src/`)
+
+A separate, offline utility that picks a famous protein for any date from a curated catalogue of 32
+landmark proteins (myoglobin, hemoglobin, GFP, the SARS-CoV-2 spike, and more), referencing
+structures in the [RCSB Protein Data Bank](https://www.rcsb.org).
+
+Selection is deterministic:
 
 ```
 epoch_day = whole days between 1970-01-01 and the target calendar date
 index     = epoch_day mod (number of proteins)
 ```
 
-Because the index advances by exactly one each day, every protein appears once before the cycle
-repeats. The same formula is implemented in Python (`src/protein_of_the_day/selector.py`) and in
-JavaScript (`docs/app.js`); they are verified to agree day-for-day.
+The index advances by one each day, so every protein appears once before the cycle repeats.
 
-## Command-line tool
+> Note: the library and the website's 3D viewer are independent — they use different protein lists
+> and different daily formulas, so they won't necessarily show the same protein on a given day.
 
 Install (editable, from a clone):
 
@@ -36,7 +68,7 @@ Install (editable, from a clone):
 pip install -e .
 ```
 
-Use it:
+Use the CLI:
 
 ```bash
 protein-of-the-day                     # today's protein
@@ -48,23 +80,7 @@ protein-of-the-day --format html       # an HTML card fragment
 protein-of-the-day --live              # add live details from the RCSB PDB
 ```
 
-Example:
-
-```text
-Protein of the Day · 2026-07-15
-p53 Tumour Suppressor
-“The 'guardian of the genome'.”
-────────────────────────────────────────────────────────────
-Category   Tumour suppressor
-Organism   Human
-PDB entry  1TUP  (https://www.rcsb.org/structure/1TUP)
-
-p53 senses DNA damage and can halt cell division or trigger cell death...
-
-Did you know? Elephants carry around twenty copies of the p53 gene...
-```
-
-## Library
+Or use it as a library:
 
 ```python
 from protein_of_the_day import protein_of_the_day, protein_for_date
@@ -77,55 +93,9 @@ xmas = protein_for_date(dt.date(2026, 12, 25))
 print(xmas.name)
 ```
 
-## Web app
-
-The `docs/` folder is the GitHub Pages site. It contains:
-
-- **`index.html`** — a portfolio/CV site (design by Caroline S. E. Nielsen) that features the
-  Protein of the Day as its showcase project.
-- **`protein-of-the-day.html`** — a self-contained interactive 3D protein viewer (3Dmol.js +
-  AlphaFold DB) that resolves a different protein each day; embedded in the portfolio's Work section.
-- **`cv.html`** — a printable academic CV page.
-- **`catalogue/`** — the self-contained catalogue app generated from this Python package. It works
-  out the day's protein in the browser (no build step, no server), lets you page through dates, and
-  pulls the structure image and a couple of live facts from the RCSB PDB.
-
-Try it locally:
-
-```bash
-python -m http.server --directory docs 8000
-# portfolio:  http://localhost:8000
-# catalogue:  http://localhost:8000/catalogue/
-```
-
-> The company logos on the portfolio use a typographic wordmark fallback until the real image files
-> (`a51-logo.png`, `synapse-logo.png`, `techbbq-logo.png`, `caroline-photo.png`) are added to
-> `docs/` — drop them in with those names and they appear automatically.
-
-### Publishing on GitHub Pages
-
-Two options:
-
-1. **From Actions (recommended):** in *Settings → Pages*, set the source to **GitHub Actions**.
-   The included [`pages.yml`](.github/workflows/pages.yml) workflow then deploys `docs/` on every
-   push to `main`.
-2. **From a branch:** in *Settings → Pages*, choose your default branch and the `/docs` folder.
-
-Both the portfolio's 3D viewer and the catalogue rotate the protein on their own each day,
-client-side, so there's nothing to rebuild daily.
-
-## The data
-
-The single source of truth is [`src/protein_of_the_day/data/proteins.json`](src/protein_of_the_day/data/proteins.json).
-Each entry references a representative structure in the PDB by its 4-character ID and keeps to
-well-established, textbook-stable facts. To add or edit a protein, change that file and regenerate
-the web app's copy:
-
-```bash
-python scripts/build_site.py
-```
-
-The test suite fails if `docs/proteins.json` drifts out of sync, so this step is enforced in CI.
+The catalogue lives in
+[`src/protein_of_the_day/data/proteins.json`](src/protein_of_the_day/data/proteins.json); each entry
+references a representative PDB structure and keeps to well-established, textbook-stable facts.
 
 ## Development
 
@@ -135,7 +105,7 @@ pytest
 ```
 
 The tests cover catalogue validation, the deterministic selector (including full-rotation and
-wrap-around behaviour), both renderers, the CLI, the offline RCSB parser, and web/catalogue sync.
+wrap-around behaviour), both renderers, the CLI, and the offline RCSB parser.
 
 ## License
 
