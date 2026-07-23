@@ -3,18 +3,18 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Caroline S. E. Nielsen — Academic CV</title>
+<title>Caroline S. E. Nielsen — CV</title>
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@400;500;600;700&family=Spectral:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@400;500;600;700&family=Spectral:wght@500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
 <style>
   :root {
-    --accent: oklch(0.50 0.095 250);
-    --display: 'Spectral', Georgia, serif;
-    --accent-deep: oklch(0.40 0.08 250);
-    --ink: #20232b;
-    --ink2: #6b6f78;
-    --line: #e6e7ea;
+    --accent: oklch(0.52 0.10 250);
+    --display: 'Libre Franklin', 'Helvetica Neue', sans-serif;
+    --accent-deep: oklch(0.42 0.085 250);
+    --ink: #23231f;
+    --ink2: #6f6e69;
+    --line: #e7e6e0;
     --paper: #ffffff;
     --sans: 'Libre Franklin', 'Helvetica Neue', Helvetica, Arial, sans-serif;
     --mono: 'Space Mono', monospace;
@@ -27,78 +27,83 @@
   .sheet { width: 794px; min-height: 1123px; background: var(--paper);
            box-shadow: 0 8px 40px rgba(0,0,0,.16); position: relative; overflow: hidden; }
 
-  /* ---------- header (filled banner) ---------- */
-  .head { padding: 40px 48px 34px; display: flex; gap: 26px; align-items: center;
-          background: var(--accent); }
-  .head .photo { width: 96px; height: 96px; flex: 0 0 auto; object-fit: cover;
-          object-position: 50% 28%; border-radius: 50%; box-shadow: 0 0 0 4px rgba(255,255,255,.25); }
-  .head .photo-fallback { width: 96px; height: 96px; flex: 0 0 auto; border-radius: 50%;
-          box-shadow: 0 0 0 4px rgba(255,255,255,.25); display: flex; align-items: center;
-          justify-content: center; background: rgba(255,255,255,.18); color: #fff;
-          font-family: var(--display); font-size: 30px; font-weight: 600; }
-  .name { font-family: var(--display); font-size: 34px; font-weight: 600; line-height: 1.02;
-          letter-spacing: -.3px; color: #fff; }
-  .tag { font-size: 13px; font-weight: 400; line-height: 1.45; color: rgba(255,255,255,.9); margin-top: 7px; max-width: 92%; }
-  .contacts { display: flex; flex-wrap: wrap; gap: 6px 20px; margin-top: 12px;
-          font-family: var(--sans); font-size: 11.5px; color: rgba(255,255,255,.95); }
-  .contacts span { display: inline-flex; align-items: baseline; gap: 6px; }
-  .contacts em { font-style: normal; color: rgba(255,255,255,.7); }
+  /* ---------- banner ---------- */
+  .banner { background: var(--accent); color: #fff; padding: 40px 48px 34px;
+            display: flex; gap: 28px; align-items: center; }
+  .banner .banner-photo { width: 104px; height: 104px; flex: 0 0 auto; object-fit: cover;
+            object-position: 50% 28%; box-shadow: 0 0 0 4px rgba(255,255,255,.25); border-radius: 50%; }
+  .banner .banner-photo-fallback { width: 104px; height: 104px; flex: 0 0 auto; border-radius: 50%;
+            box-shadow: 0 0 0 4px rgba(255,255,255,.25); display: flex; align-items: center;
+            justify-content: center; background: rgba(255,255,255,.18); color: #fff;
+            font-family: var(--display); font-size: 34px; font-weight: 700; }
+  .banner-name { font-family: var(--display); font-size: 33px; font-weight: 700; line-height: 1.02; letter-spacing: -.6px; }
+  .banner-tag { font-size: 13.5px; font-weight: 400; line-height: 1.45;
+                color: rgba(255,255,255,.9); margin-top: 9px; max-width: 90%; }
+  .banner-contacts { display: flex; flex-wrap: wrap; gap: 8px 22px; margin-top: 14px;
+            font-family: var(--sans); font-size: 11.5px; color: rgba(255,255,255,.95); }
+  .banner-contacts span { display: inline-flex; align-items: baseline; gap: 7px; }
+  .banner-contacts em { font-style: normal; opacity: .7; }
 
   /* ---------- body grid ---------- */
   .body { display: grid; grid-template-columns: 1.62fr 1fr; gap: 0; }
-  .col-main { padding: 30px 32px 38px 48px; }
-  .col-rail { padding: 30px 48px 38px 30px; border-left: 1px solid var(--line);
-              background: oklch(0.985 0.005 250); }
+  .col-main { padding: 34px 34px 40px 48px; }
+  .col-rail { padding: 34px 48px 40px 30px; border-left: 1px solid var(--line);
+              background: oklch(0.985 0.004 185); }
 
-  .sec { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 1.8px;
-         color: var(--accent); padding-bottom: 6px; border-bottom: 1px solid var(--line);
-         margin: 0 0 15px; }
-  .sec.mt { margin-top: 26px; }
+  .sec { font-size: 11.5px; font-weight: 700; text-transform: uppercase; letter-spacing: 1.8px;
+         color: var(--accent); padding-bottom: 6px; border-bottom: 2px solid var(--accent);
+         margin: 0 0 16px; }
+  .sec.mt { margin-top: 30px; }
 
-  /* entries */
-  .entry { display: grid; grid-template-columns: 74px 1fr; gap: 14px; margin-bottom: 16px; }
+  /* timeline entries */
+  .entry { display: grid; grid-template-columns: 78px 1fr; gap: 14px; margin-bottom: 17px; }
   .entry:last-child { margin-bottom: 0; }
-  .yr { font-family: var(--mono); font-size: 10px; font-weight: 700; color: var(--accent);
-        line-height: 1.5; padding-top: 2px; }
-  .role { font-family: var(--display); font-size: 15px; font-weight: 600; color: var(--ink); }
+  .yr { font-family: var(--mono); font-size: 10.5px; font-weight: 700; color: var(--accent);
+        line-height: 1.5; padding-top: 1px; }
+  .role { font-family: var(--display); font-size: 14.5px; font-weight: 700; color: var(--ink); }
   .org { font-size: 12.5px; color: var(--ink2); margin-top: 1px; }
-  .desc-list { list-style: none; font-size: 12.5px; line-height: 1.5; color: #43454d; margin: 6px 0 0; padding-left: 0; }
+  .desc { font-size: 12.5px; line-height: 1.5; color: #45443f; margin: 6px 0 0; }
+  .desc-list { list-style: none; font-size: 12.5px; line-height: 1.5; color: #45443f; margin: 6px 0 0; padding-left: 0; }
   .desc-list li { position: relative; padding-left: 15px; margin-bottom: 3px; }
   .desc-list li:last-child { margin-bottom: 0; }
   .desc-list li::before { content: ''; position: absolute; left: 1px; top: 7px; width: 4px; height: 4px;
             border-radius: 50%; border: 1.4px solid var(--accent); }
-  .sub { margin-top: 8px; padding-left: 14px; border-left: 2px solid var(--line); }
+  .desc-list li.main { font-weight: 700; color: var(--ink); }
+  .desc-list li.main::before { background: var(--accent); }
+  .sub { margin-top: 9px; padding-left: 14px; border-left: 2px solid var(--line); }
   .sub .role { font-size: 13px; }
 
   /* rail */
-  .profile { font-size: 12.5px; line-height: 1.55; color: #43454d; margin: 0; }
-  .methods { display: flex; flex-direction: column; gap: 9px; }
-  .m-group { }
-  .m-cat { font-size: 9.5px; font-weight: 700; text-transform: uppercase; letter-spacing: 1.1px;
-           color: var(--accent-deep); margin-bottom: 6px; }
-  .chips { display: flex; flex-wrap: wrap; gap: 6px; }
-  .chip { font-size: 10.5px; font-weight: 500; padding: 4px 10px; border: 1px solid var(--line);
-          color: #43454d; border-radius: 5px; background: #fff; }
-  .lang { margin-bottom: 12px; }
+  .profile { font-size: 12.5px; line-height: 1.55; color: #45443f; margin: 0; }
+  .chips { display: flex; flex-wrap: wrap; gap: 7px; }
+  .chip { font-size: 11px; font-weight: 500; padding: 5px 11px; border: 1px solid var(--accent);
+          color: var(--accent-deep); border-radius: 999px; background: rgba(255,255,255,.6); white-space: nowrap; }
+  .softskills { list-style: none; margin: 0; padding: 0; }
+  .softskills li { position: relative; padding-left: 18px; font-size: 12.5px; line-height: 1.45;
+          color: #45443f; margin-bottom: 10px; }
+  .softskills li:last-child { margin-bottom: 0; }
+  .softskills li::before { content: ''; position: absolute; left: 0; top: 7px; width: 6px; height: 6px;
+          border-radius: 50%; background: var(--accent); }
+  .ss-note { font-family: var(--mono); font-size: 10px; color: var(--ink2); }
+  .ss-cat { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 1.2px;
+            color: var(--accent-deep); margin: 15px 0 8px; }
+  .softlist { list-style: none; margin: 0; padding: 0; }
+  .softlist li { font-size: 12.5px; line-height: 1.42; color: #45443f; position: relative;
+                 padding-left: 16px; margin-bottom: 9px; }
+  .softlist li:last-child { margin-bottom: 0; }
+  .softlist li::before { content: ''; position: absolute; left: 0; top: 7px; width: 6px; height: 6px;
+                 background: var(--accent); border-radius: 50%; }
+  .lang { margin-bottom: 13px; }
   .lang:last-child { margin-bottom: 0; }
   .lang-top { display: flex; justify-content: space-between; align-items: baseline;
               font-size: 12.5px; margin-bottom: 5px; }
   .lang-lvl { font-family: var(--mono); font-size: 9.5px; color: var(--ink2); text-transform: uppercase; letter-spacing: .5px; }
-  .lang-track { height: 5px; background: #e3e4e8; border-radius: 4px; overflow: hidden; }
+  .lang-track { height: 6px; background: #e3e2db; border-radius: 4px; overflow: hidden; }
   .lang-fill { height: 100%; background: var(--accent); border-radius: 4px; }
-  .interests { font-size: 12.5px; line-height: 1.55; color: #43454d; margin: 0; }
-  .ss-cat { font-size: 9.5px; font-weight: 700; text-transform: uppercase; letter-spacing: 1.1px;
-            color: var(--accent-deep); margin: 13px 0 7px; }
-  .softskills { list-style: none; margin: 0; padding: 0; }
-  .softskills li { position: relative; padding-left: 15px; font-size: 12px; line-height: 1.4;
-            color: #43454d; margin-bottom: 6px; }
-  .softskills li:last-child { margin-bottom: 0; }
-  .softskills li::before { content: ''; position: absolute; left: 1px; top: 6px; width: 4px; height: 4px;
-            border-radius: 50%; border: 1.4px solid var(--accent); }
 
-  .backlink { position: fixed; left: 18px; bottom: 16px; font-family: var(--sans); font-size: 12px;
-              color: var(--accent-deep); text-decoration: none; background: #fff; padding: 7px 13px;
-              border-radius: 999px; box-shadow: 0 2px 10px rgba(0,0,0,.12); }
+  .backlink { position: fixed; left: 18px; bottom: 16px; font-family: 'Libre Franklin', sans-serif;
+              font-size: 12px; color: var(--accent-deep); text-decoration: none; background: #fff;
+              padding: 7px 13px; border-radius: 999px; box-shadow: 0 2px 10px rgba(0,0,0,.12); }
   .backlink:hover { background: var(--accent); color: #fff; }
 
   @media print {
@@ -106,23 +111,23 @@
     html, body { background: #fff; padding: 0; margin: 0; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
     .sheet { box-shadow: none; width: 100%; min-height: 100vh; }
     .backlink { display: none !important; }
-    .head { padding: 30px 48px 22px; }
+    .banner { padding: 28px 48px 24px; }
     .col-main { padding-top: 24px; padding-bottom: 22px; }
     .col-rail { padding-top: 24px; padding-bottom: 22px; }
-    .entry { margin-bottom: 13px; }
+    .entry { margin-bottom: 12px; }
     .sec.mt { margin-top: 20px; }
   }
 </style>
 </head>
 <body>
   <main class="sheet">
-    <header class="head">
-      <img class="photo" src="caroline-photo.png" alt="Caroline S. E. Nielsen"
-           onerror="this.outerHTML='&lt;div class=&quot;photo-fallback&quot; aria-label=&quot;Caroline S. E. Nielsen&quot;&gt;CN&lt;/div&gt;'" />
+    <header class="banner">
+      <img class="banner-photo" src="caroline-photo.png" alt="Caroline S. E. Nielsen"
+           onerror="this.outerHTML='&lt;div class=&quot;banner-photo-fallback&quot; aria-label=&quot;Caroline S. E. Nielsen&quot;&gt;CN&lt;/div&gt;'" />
       <div>
-        <div class="name">Caroline S. E. Nielsen</div>
-        <div class="tag">M.Sc. Biochemistry student building at the frontier of biology, machine learning, and R&amp;D.</div>
-        <div class="contacts">
+        <div class="banner-name">Caroline S. E. Nielsen</div>
+        <div class="banner-tag">Next-generation leader at the cutting edge of AI in biotech.</div>
+        <div class="banner-contacts">
           <span><em>Tel</em> +45 21 52 91 03</span>
           <span><em>Email</em> caroline10@live.dk</span>
           <span><em>Base</em> Copenhagen · Paris</span>
@@ -138,21 +143,34 @@
           <div class="yr">2026<br />Mar–Sep</div>
           <div>
             <div class="role">Research Intern, A51</div>
-            <div class="org">Early-stage biotech · Paris, France</div>
+            <div class="org">Early-stage biotech start-up · Paris, France</div>
             <ul class="desc-list">
-              <li>Contributed to research on long non-coding RNA (lncRNA)</li>
-              <li>Supported AI-enabled workflow optimization across research, operations, and marketing</li>
+              <li class="main">Devised R&amp;D strategy for the next technical proof of concept</li>
+              <li>AI-enabled workflow optimization across research, operations, and marketing</li>
+              <li>3 agentic R&amp;D workflows built with Claude Code for specialized analysis tools</li>
             </ul>
           </div>
         </div>
 
         <div class="entry">
-          <div class="yr">2025<br />Jan</div>
+          <div class="yr">2026–</div>
           <div>
-            <div class="role">Research Internship, CEA Paris</div>
-            <div class="org">Université Paris Cité exchange · Paris, France</div>
+            <div class="role">Core Member, Synapse</div>
+            <div class="org">Student-led life-science community · Copenhagen, Denmark</div>
             <ul class="desc-list">
-              <li>Analytical problem-solving and structuring with report writing</li>
+              <li class="main">Built bridges between life-science students, academia, and industry</li>
+              <li>10+ partnerships across academia and industry</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="entry">
+          <div class="yr">2026<br />Mar</div>
+          <div>
+            <div class="role">Life Science Project Assistant, TechBBQ</div>
+            <div class="org">Scandinavia's largest startup &amp; innovation summit · Copenhagen, Denmark</div>
+            <ul class="desc-list">
+              <li class="main">Coordinated event logistics, planning, and execution</li>
             </ul>
           </div>
         </div>
@@ -161,9 +179,9 @@
           <div class="yr">2025<br />Jan–Aug</div>
           <div>
             <div class="role">Laboratory Assistant</div>
-            <div class="org">Plant &amp; Environmental Sciences, Univ. of Copenhagen</div>
+            <div class="org">Plant &amp; Environmental Sciences, Univ. of Copenhagen · Copenhagen, Denmark</div>
             <ul class="desc-list">
-              <li>Assisted a joint project between U Copenhagen and U Cambridge</li>
+              <li>Supported a project involving two academic institutions (U Copenhagen &amp; U Cambridge)</li>
             </ul>
           </div>
         </div>
@@ -172,28 +190,7 @@
           <div class="yr">2021–23</div>
           <div>
             <div class="role">Student Assistant</div>
-            <div class="org">Drug Design &amp; Pharmacology, Univ. of Copenhagen</div>
-          </div>
-        </div>
-
-        <h2 class="sec mt">Engagement</h2>
-
-        <div class="entry">
-          <div class="yr">2026–</div>
-          <div>
-            <div class="role">Core Member, Synapse</div>
-            <div class="org">Student-led life-science community · Copenhagen, Denmark</div>
-            <ul class="desc-list">
-              <li>Built bridges between life-science students, academia, and industry</li>
-            </ul>
-          </div>
-        </div>
-
-        <div class="entry">
-          <div class="yr">2026<br />Mar</div>
-          <div>
-            <div class="role">Project Assistant, TechBBQ</div>
-            <div class="org">Nordic startup &amp; innovation summit · Copenhagen, Denmark</div>
+            <div class="org">Drug Design &amp; Pharmacology, Univ. of Copenhagen · Copenhagen, Denmark</div>
           </div>
         </div>
 
@@ -218,43 +215,33 @@
             <div class="org">University of Copenhagen · Copenhagen, Denmark</div>
           </div>
         </div>
-
-        <h2 class="sec mt">Awards</h2>
-
-        <div class="entry">
-          <div class="yr">2018</div>
-          <div>
-            <div class="role">Book Prize, Top Academic Performance</div>
-            <div class="org">Awarded for outstanding results at high school graduation</div>
-          </div>
-        </div>
       </section>
 
       <aside class="col-rail">
         <h2 class="sec">Profile</h2>
-        <p class="profile">Young professional with a background spanning biochemistry, business, and life science entrepreneurship. I have experience working across biotech startups, student-led organizations, and academia.</p>
+        <p class="profile" style="font-family: 'Helvetica Neue'; font-size: 13px;">Young professional with a background spanning biochemistry, business, and life science entrepreneurship. I have experience working across biotech startups, student-led organizations, and academia.</p>
 
         <h2 class="sec mt">Skills</h2>
 
-        <div class="ss-cat">Analytical &amp; technical</div>
+        <div class="ss-cat">Analytical / Problem solving</div>
         <ul class="softskills">
-          <li>Translate complex data into clear narratives</li>
-          <li>Apply quantitative methods and tools to decision-making</li>
-          <li>Turn research questions into clear analyses</li>
+          <li>Translation of complex data into clear narratives</li>
+          <li>Methods and tools for quantitative decision-making</li>
+          <li>Problem-solving in business and research environments</li>
         </ul>
 
-        <div class="ss-cat">Communication &amp; coordination</div>
+        <div class="ss-cat">Leadership / Project management</div>
         <ul class="softskills">
-          <li>Communicate clearly across verbal and written formats</li>
-          <li>Coordinate projects from planning through execution</li>
-          <li>Collaborate across cross-functional teams</li>
+          <li>Communication across verbal and written formats</li>
+          <li>Stakeholder management across students, academia, and industry</li>
+          <li>Project coordination from planning through execution</li>
         </ul>
 
         <div class="ss-cat">Execution / Delivery</div>
         <ul class="softskills">
-          <li>Work with a proactive, results-driven mindset</li>
-          <li>Deliver results on time</li>
-          <li>Prioritise tasks in a fast-paced setting</li>
+          <li>Delivery of results on time</li>
+          <li>Task prioritisation in a fast-paced setting</li>
+          <li>Collaboration across cross-functional teams</li>
         </ul>
 
         <h2 class="sec mt">Languages</h2>
