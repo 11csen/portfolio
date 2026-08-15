@@ -8,8 +8,6 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&amp;family=Manrope:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
-<!-- Iconify -->
-<script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
 <!-- Tailwind CSS -->
 <script src="https://cdn.tailwindcss.com"></script>
 <style>
@@ -19,8 +17,6 @@
     --accent-wash: color-mix(in srgb, var(--accent) 7%, white);
     --accent-wash-border: color-mix(in srgb, var(--accent) 14%, white);
   }
-  iconify-icon { stroke-width: 1.5px; stroke: currentColor; fill: none; }
-  iconify-icon * { vector-effect: non-scaling-stroke; }
   html { scroll-behavior: smooth; }
   .no-scrollbar::-webkit-scrollbar { display: none; }
   .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
@@ -28,6 +24,8 @@
   a:not([class]) { color: var(--accent); }
   a:not([class]):hover { color: var(--accent-hover); }
   section[id] { scroll-margin-top: 6rem; }
+  /* clear divider between sections */
+  .section-divider { border: 0; border-top: 1px solid rgb(226 232 240); margin: 4rem 0; }
   /* graceful fallback for brand marks when a logo file isn't present */
   .wordmark {
     font-family: 'Manrope', sans-serif; font-weight: 800; letter-spacing: -0.02em;
@@ -75,7 +73,7 @@
     <div class="flex flex-1 pt-16 max-w-[1536px] w-full mx-auto" id="top">
 
         <!-- Sidebar Navigation -->
-        <aside class="w-64 shrink-0 hidden lg:flex flex-col justify-between px-6 py-10 sticky top-16 h-[calc(100vh-4rem)] overflow-y-auto no-scrollbar border-r border-slate-100/50" data-screen-label="Sidebar">
+        <aside class="w-64 shrink-0 hidden lg:flex flex-col justify-between px-6 py-10 sticky top-16 h-[calc(100vh-4rem)] overflow-y-auto no-scrollbar border-r border-slate-100/50">
             <div>
                 <div class="mb-8 px-2">
                     <h2 class="text-xs font-medium text-[var(--accent)] uppercase tracking-wider mb-1">Index</h2>
@@ -83,32 +81,25 @@
                 </div>
 
                 <nav class="flex flex-col gap-1">
-                    <a href="#top" class="flex items-center gap-3 bg-white px-3 py-2.5 rounded-lg shadow-[0_1px_2px_rgba(0,0,0,0.02)] border border-slate-100 text-[var(--accent)] text-sm font-medium transition-all">
-                        <iconify-icon icon="solar:pie-chart-linear" width="18" height="18"></iconify-icon>
+                    <a href="#top" class="px-3 py-2.5 rounded-lg bg-white shadow-[0_1px_2px_rgba(0,0,0,0.02)] border border-slate-100 text-[var(--accent)] text-sm font-medium transition-all">
                         Overview
                     </a>
-                    <a href="#featured" class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-slate-500 hover:text-slate-800 hover:bg-slate-100/50 text-sm font-normal transition-all">
-                        <iconify-icon icon="solar:dna-linear" width="18" height="18"></iconify-icon>
+                    <a href="#featured" class="px-3 py-2.5 rounded-lg text-slate-500 hover:text-slate-800 hover:bg-slate-100/50 text-sm font-normal transition-all">
                         Featured
                     </a>
-                    <a href="#work" class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-slate-500 hover:text-slate-800 hover:bg-slate-100/50 text-sm font-normal transition-all">
-                        <iconify-icon icon="solar:programming-linear" width="18" height="18"></iconify-icon>
+                    <a href="#work" class="px-3 py-2.5 rounded-lg text-slate-500 hover:text-slate-800 hover:bg-slate-100/50 text-sm font-normal transition-all">
                         Work
                     </a>
-                    <a href="#timeline" class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-slate-500 hover:text-slate-800 hover:bg-slate-100/50 text-sm font-normal transition-all">
-                        <iconify-icon icon="solar:test-tube-linear" width="18" height="18"></iconify-icon>
+                    <a href="#timeline" class="px-3 py-2.5 rounded-lg text-slate-500 hover:text-slate-800 hover:bg-slate-100/50 text-sm font-normal transition-all">
                         Timeline
                     </a>
-                    <a href="#profile" class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-slate-500 hover:text-slate-800 hover:bg-slate-100/50 text-sm font-normal transition-all">
-                        <iconify-icon icon="solar:atom-linear" width="18" height="18"></iconify-icon>
+                    <a href="#profile" class="px-3 py-2.5 rounded-lg text-slate-500 hover:text-slate-800 hover:bg-slate-100/50 text-sm font-normal transition-all">
                         Profile
                     </a>
-                    <a href="#skills" class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-slate-500 hover:text-slate-800 hover:bg-slate-100/50 text-sm font-normal transition-all">
-                        <iconify-icon icon="solar:cpu-linear" width="18" height="18"></iconify-icon>
+                    <a href="#skills" class="px-3 py-2.5 rounded-lg text-slate-500 hover:text-slate-800 hover:bg-slate-100/50 text-sm font-normal transition-all">
                         Skills
                     </a>
-                    <a href="#contact" class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-slate-500 hover:text-slate-800 hover:bg-slate-100/50 text-sm font-normal transition-all">
-                        <iconify-icon icon="solar:letter-linear" width="18" height="18"></iconify-icon>
+                    <a href="#contact" class="px-3 py-2.5 rounded-lg text-slate-500 hover:text-slate-800 hover:bg-slate-100/50 text-sm font-normal transition-all">
                         Contact
                     </a>
                 </nav>
@@ -116,15 +107,8 @@
 
             <!-- Status -->
             <div class="bg-slate-200/50 rounded-xl p-4 mt-8 border border-slate-200/30">
-                <div class="flex items-center gap-3">
-                    <div class="w-8 h-8 rounded-full bg-[var(--accent-wash)] flex items-center justify-center shrink-0">
-                        <iconify-icon icon="solar:shield-check-linear" width="16" height="16" class="text-[var(--accent)]"></iconify-icon>
-                    </div>
-                    <div>
-                        <h3 class="text-[0.65rem] font-medium text-slate-500 tracking-wider">STATUS</h3>
-                        <p class="text-xs font-normal text-[var(--accent)] mt-0.5">Research Intern @ A51, Paris</p>
-                    </div>
-                </div>
+                <h3 class="text-[0.65rem] font-medium text-slate-500 tracking-wider">STATUS</h3>
+                <p class="text-xs font-normal text-[var(--accent)] mt-0.5">Research Intern @ A51, Paris</p>
             </div>
         </aside>
 
@@ -132,13 +116,9 @@
         <main class="flex-1 px-6 py-12 md:px-16 lg:px-24 xl:px-32 max-w-5xl mx-auto">
 
             <!-- Hero Section -->
-            <section class="mb-32 pt-8 lg:pt-16" data-screen-label="Hero">
+            <section class="pt-8 lg:pt-16">
                 <div class="max-w-4xl">
                     <div>
-                        <div class="inline-flex items-center bg-[var(--accent-wash)] border border-[var(--accent-wash-border)] text-[var(--accent)] text-[0.65rem] font-medium uppercase tracking-widest px-3 py-1.5 rounded-full mb-8">
-                            M.Sc. Biochemistry · Copenhagen · Paris
-                        </div>
-
                         <h1 class="font-['Manrope'] font-bold text-5xl md:text-7xl lg:text-[5.5rem] leading-[1.05] tracking-tighter text-slate-900 mb-8">
                             The Future of<br>
                             <span class="text-[var(--accent)]">Biotech.</span>
@@ -153,45 +133,45 @@
                                 Download CV
                             </a>
                             <a href="https://www.linkedin.com/in/caroline-sandholdt" target="_blank" rel="noopener" class="bg-slate-200/40 hover:bg-slate-200/60 backdrop-blur-md border border-slate-200/50 text-slate-700 px-8 py-3.5 rounded-lg text-sm font-medium transition-all flex justify-center w-full sm:w-auto">
-                                LinkedIn ↗
+                                LinkedIn
                             </a>
                         </div>
                     </div>
                 </div>
             </section>
 
-            <!-- Featured (Staggered Layout) -->
-            <section class="space-y-32 mb-32" id="featured" data-screen-label="Featured">
+            <hr class="section-divider">
 
-                <!-- 001 A51 -->
+            <!-- Featured (Staggered Layout) -->
+            <section class="space-y-32" id="featured">
+
+                <!-- A51 -->
                 <article class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
                     <div class="lg:col-span-7 relative group rounded-2xl overflow-hidden aspect-[16/10] bg-white border border-slate-100 shadow-sm flex items-center justify-center">
                         <img src="a51-logo.png" data-wordmark="A51" alt="A51 logo" class="w-1/2 max-w-[280px] object-contain">
                     </div>
                     <div class="lg:col-span-5 flex flex-col items-start">
-                        <span class="text-[0.65rem] text-[var(--accent)] uppercase tracking-widest mb-4">Experience / 001 · 2026, Paris</span>
+                        <span class="text-[0.65rem] text-[var(--accent)] uppercase tracking-widest mb-4">Experience · 2026, Paris</span>
                         <h3 class="font-['Manrope'] font-semibold text-3xl md:text-4xl tracking-tight text-slate-900 mb-4">Research Intern, A51</h3>
                         <p class="text-sm font-light text-slate-500 mb-8 leading-relaxed">
                             <a href="https://a51tx.com/" target="_blank" rel="noopener" class="underline underline-offset-2 decoration-slate-300 hover:text-[var(--accent)] hover:decoration-[var(--accent)] transition-colors">Early-stage biotech start-up</a>. Devised R&amp;D strategy for the next technical proof of concept, contributed to research on long non-coding RNA, and built three agentic R&amp;D workflows with Claude Code for specialized analysis tools.
                         </p>
-                        <a href="https://www.linkedin.com/in/caroline-sandholdt" target="_blank" rel="noopener" class="inline-flex items-center gap-2 text-xs font-medium text-slate-800 uppercase tracking-widest hover:text-[var(--accent)] transition-colors group">
+                        <a href="https://www.linkedin.com/in/caroline-sandholdt" target="_blank" rel="noopener" class="inline-flex items-center gap-2 text-xs font-medium text-slate-800 uppercase tracking-widest hover:text-[var(--accent)] transition-colors">
                             More on LinkedIn
-                            <iconify-icon icon="solar:arrow-right-linear" width="14" height="14" class="transform group-hover:translate-x-1 transition-transform"></iconify-icon>
                         </a>
                     </div>
                 </article>
 
-                <!-- 002 Synapse (reversed) -->
+                <!-- Synapse (reversed) -->
                 <article class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
                     <div class="lg:col-span-5 flex flex-col items-start lg:items-end lg:text-right order-2 lg:order-1">
-                        <span class="text-[0.65rem] text-[var(--accent)] uppercase tracking-widest mb-4">Engagement / 002 · 2026–, Copenhagen</span>
+                        <span class="text-[0.65rem] text-[var(--accent)] uppercase tracking-widest mb-4">Engagement · 2026–, Copenhagen</span>
                         <h3 class="font-['Manrope'] font-semibold text-3xl md:text-4xl tracking-tight text-slate-900 mb-4">Core Member, Synapse</h3>
                         <p class="text-sm font-light text-slate-500 mb-8 leading-relaxed">
-                            Student-led life-science community. Building bridges between life-science students, academia, and industry<br><br>10+ partnerships across academia and industry.
+                            Student-led life-science community. Building bridges between life-science students, academia, and industry<br><br>
                         </p>
-                        <a href="https://www.linkedin.com/in/caroline-sandholdt" target="_blank" rel="noopener" class="inline-flex items-center gap-2 text-xs font-medium text-slate-800 uppercase tracking-widest hover:text-[var(--accent)] transition-colors group">
+                        <a href="https://www.linkedin.com/in/caroline-sandholdt" target="_blank" rel="noopener" class="inline-flex items-center gap-2 text-xs font-medium text-slate-800 uppercase tracking-widest hover:text-[var(--accent)] transition-colors">
                             More on LinkedIn
-                            <iconify-icon icon="solar:arrow-right-linear" width="14" height="14" class="transform group-hover:translate-x-1 transition-transform"></iconify-icon>
                         </a>
                     </div>
                     <div class="lg:col-span-7 relative group rounded-2xl overflow-hidden aspect-[16/10] bg-white border border-slate-100 shadow-sm order-1 lg:order-2 flex items-center justify-center">
@@ -199,13 +179,13 @@
                     </div>
                 </article>
 
-                <!-- 003 TechBBQ -->
+                <!-- TechBBQ -->
                 <article class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
                     <div class="lg:col-span-7 relative group rounded-2xl overflow-hidden aspect-[16/10] bg-white border border-slate-100 shadow-sm flex items-center justify-center">
                         <img src="techbbq-logo.png" data-wordmark="TechBBQ" alt="TechBBQ logo" class="w-1/2 max-w-[320px] object-contain">
                     </div>
                     <div class="lg:col-span-5 flex flex-col items-start">
-                        <span class="text-[0.65rem] text-[var(--accent)] uppercase tracking-widest mb-4">Engagement / 003 · 2026, Copenhagen</span>
+                        <span class="text-[0.65rem] text-[var(--accent)] uppercase tracking-widest mb-4">Engagement · 2026, Copenhagen</span>
                         <h3 class="font-['Manrope'] font-semibold text-3xl md:text-4xl tracking-tight text-slate-900 mb-4">Project Assistant, TechBBQ</h3>
                         <p class="text-sm font-light text-slate-500 mb-8 leading-relaxed">
                             Scandinavia's largest startup &amp; innovation summit. Coordinated life-science event logistics, planning, and execution.
@@ -215,27 +195,30 @@
 
             </section>
 
+            <hr class="section-divider">
+
             <!-- Work: Interactive project -->
-            <section class="mb-32" id="work" data-screen-label="Work">
+            <section id="work">
                 <span class="text-[0.65rem] text-[var(--accent)] uppercase tracking-widest mb-4 block">Selected work · Built</span>
                 <h2 class="font-['Manrope'] font-semibold text-3xl md:text-4xl tracking-tight text-slate-900 mb-4">Protein of the Day.</h2>
                 <p class="text-sm font-light text-slate-500 mb-10 leading-relaxed max-w-2xl">
-                    An interactive viewer that resolves a different protein each day from the AlphaFold database and renders its live 3D structure right in the browser, colored by model confidence, free to rotate, with a space-filling surface view. Built from scratch with 3Dmol.js and vanilla JavaScript.
+                    An interactive viewer that resolves a different protein each day from the AlphaFold database and renders its live 3D structure. 
                 </p>
                 <div class="relative rounded-2xl overflow-hidden border border-slate-200 shadow-[0_10px_40px_-12px_rgba(15,23,42,0.35)] bg-[#05060a]">
                     <iframe src="protein-of-the-day.html" title="Protein of the Day · interactive 3D protein viewer" loading="lazy" class="w-full aspect-[16/9] block" style="border:0"></iframe>
                 </div>
                 <div class="mt-6 flex flex-wrap items-center gap-x-6 gap-y-2">
-                    <a href="protein-of-the-day.html" target="_blank" rel="noopener" class="inline-flex items-center gap-2 text-xs font-medium text-slate-800 uppercase tracking-widest hover:text-[var(--accent)] transition-colors group">
+                    <a href="protein-of-the-day.html" target="_blank" rel="noopener" class="inline-flex items-center gap-2 text-xs font-medium text-slate-800 uppercase tracking-widest hover:text-[var(--accent)] transition-colors">
                         Open full screen
-                        <iconify-icon icon="solar:arrow-right-up-linear" width="14" height="14" class="transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform"></iconify-icon>
                     </a>
                     <span class="text-[0.65rem] uppercase tracking-widest text-slate-400">3Dmol.js · AlphaFold DB · Vanilla JS</span>
                 </div>
             </section>
 
+            <hr class="section-divider">
+
             <!-- Timeline -->
-            <section class="mb-32" id="timeline" data-screen-label="Timeline">
+            <section id="timeline">
                 <span class="text-[0.65rem] text-[var(--accent)] uppercase tracking-widest mb-4 block">Timeline</span>
                 <h2 class="font-['Manrope'] font-semibold text-3xl md:text-4xl tracking-tight text-slate-900 mb-10">More experience.</h2>
 
@@ -264,15 +247,14 @@
                 </div>
             </section>
 
+            <hr class="section-divider">
+
             <!-- Bento Grid: Profile -->
-            <section class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-32" id="profile" data-screen-label="Profile">
+            <section class="grid grid-cols-1 md:grid-cols-4 gap-6" id="profile">
 
                 <!-- About -->
                 <div class="md:col-span-2 md:row-span-2 bg-white rounded-2xl p-8 lg:p-10 shadow-[0_2px_8px_-2px_rgba(0,0,0,0.05)] border border-slate-100 flex flex-col justify-between group">
                     <div>
-                        <div class="w-10 h-10 rounded-full bg-[var(--accent-wash)] flex items-center justify-center mb-6">
-                            <iconify-icon icon="solar:user-circle-linear" width="20" height="20" class="text-[var(--accent)]"></iconify-icon>
-                        </div>
                         <h4 class="font-['Manrope'] font-semibold text-2xl tracking-tight text-slate-900 mb-3">Profile</h4>
                         <p class="text-sm font-light text-slate-500 leading-relaxed max-w-xs">
                             Young professional with a background spanning biochemistry, business, and life science entrepreneurship, experience across biotech startups, student-led organizations, and academia.
@@ -294,10 +276,10 @@
                     </div>
                     <span class="text-[0.65rem] text-[var(--accent)] uppercase tracking-widest mb-3 relative z-10">Education</span>
                     <h5 class="font-['Manrope'] font-semibold text-xl tracking-tight text-slate-800 relative z-10 pr-20">
-                        M.Sc. Biochemistry · University of Copenhagen
+                      M.Sc. Biochemistry · University of Copenhagen
                     </h5>
                     <p class="text-xs font-light text-slate-500 mt-3 relative z-10 leading-relaxed">
-                        2025–27 · Master 2 exchange, Université Paris Cité (2025–26)<br>
+                        2025–26 · Master 2 exchange, Université Paris Cité<br>
                         B.Sc. Biochemistry, University of Copenhagen · 2020–24
                     </p>
                 </div>
@@ -316,16 +298,15 @@
 
             </section>
 
+            <hr class="section-divider">
+
             <!-- Skills -->
-            <section class="mb-32" id="skills" data-screen-label="Skills">
+            <section id="skills">
                 <span class="text-[0.65rem] text-[var(--accent)] uppercase tracking-widest mb-4 block">Skills</span>
                 <h2 class="font-['Manrope'] font-semibold text-3xl md:text-4xl tracking-tight text-slate-900 mb-10">How I work.</h2>
 
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
                     <div class="bg-white rounded-2xl p-8 border border-slate-100 shadow-[0_2px_8px_-2px_rgba(0,0,0,0.05)]">
-                        <div class="w-10 h-10 rounded-full bg-[var(--accent-wash)] flex items-center justify-center mb-6">
-                            <iconify-icon icon="solar:cpu-linear" width="20" height="20" class="text-[var(--accent)]"></iconify-icon>
-                        </div>
                         <h4 class="font-['Manrope'] font-semibold text-lg tracking-tight text-slate-900 mb-4">Analytical &amp; technical</h4>
                         <ul class="text-sm font-light text-slate-500 leading-relaxed space-y-2">
                             <li>Translate complex data into clear narratives</li>
@@ -334,9 +315,6 @@
                         </ul>
                     </div>
                     <div class="bg-white rounded-2xl p-8 border border-slate-100 shadow-[0_2px_8px_-2px_rgba(0,0,0,0.05)]">
-                        <div class="w-10 h-10 rounded-full bg-[var(--accent-wash)] flex items-center justify-center mb-6">
-                            <iconify-icon icon="solar:letter-linear" width="20" height="20" class="text-[var(--accent)]"></iconify-icon>
-                        </div>
                         <h4 class="font-['Manrope'] font-semibold text-lg tracking-tight text-slate-900 mb-4">Communication &amp; coordination</h4>
                         <ul class="text-sm font-light text-slate-500 leading-relaxed space-y-2">
                             <li>Communicate clearly, verbal and written</li>
@@ -345,9 +323,6 @@
                         </ul>
                     </div>
                     <div class="bg-white rounded-2xl p-8 border border-slate-100 shadow-[0_2px_8px_-2px_rgba(0,0,0,0.05)]">
-                        <div class="w-10 h-10 rounded-full bg-[var(--accent-wash)] flex items-center justify-center mb-6">
-                            <iconify-icon icon="solar:shield-check-linear" width="20" height="20" class="text-[var(--accent)]"></iconify-icon>
-                        </div>
                         <h4 class="font-['Manrope'] font-semibold text-lg tracking-tight text-slate-900 mb-4">Execution &amp; delivery</h4>
                         <ul class="text-sm font-light text-slate-500 leading-relaxed space-y-2">
                             <li>Proactive, results-driven mindset</li>
@@ -358,8 +333,10 @@
                 </div>
             </section>
 
+            <hr class="section-divider">
+
             <!-- Contact -->
-            <section class="max-w-3xl mx-auto text-center flex flex-col items-center mb-16" id="contact" data-screen-label="Contact">
+            <section class="max-w-3xl mx-auto text-center flex flex-col items-center" id="contact">
                 <h2 class="font-['Manrope'] font-semibold text-3xl md:text-4xl tracking-tight text-slate-900 mb-8">
                     Open to conversations across biotech, AI &amp; life-science innovation.
                 </h2>
@@ -369,7 +346,7 @@
                         caroline10@live.dk
                     </a>
                     <a href="https://www.linkedin.com/in/caroline-sandholdt" target="_blank" rel="noopener" class="bg-slate-200/40 hover:bg-slate-200/60 backdrop-blur-md border border-slate-200/50 text-slate-700 px-8 py-3.5 rounded-lg text-sm font-medium transition-all">
-                        LinkedIn ↗
+                        LinkedIn
                     </a>
                 </div>
 
@@ -385,31 +362,25 @@
                     <a href="mailto:caroline10@live.dk" class="text-[var(--accent)] hover:text-[var(--accent-hover)] font-normal">email</a>
                     on request.
                 </p>
-
-                <div class="flex items-center gap-2 mt-16">
-                    <div class="w-1.5 h-1.5 rounded-full bg-slate-200"></div>
-                    <div class="w-1.5 h-1.5 rounded-full bg-[var(--accent)]"></div>
-                    <div class="w-1.5 h-1.5 rounded-full bg-slate-200"></div>
-                </div>
             </section>
 
         </main>
     </div>
 
     <!-- Footer -->
-    <footer class="mt-auto border-t border-slate-200/60 bg-white" data-screen-label="Footer">
+    <footer class="mt-auto border-t border-slate-200/60 bg-white">
         <div class="max-w-[1536px] mx-auto px-6 md:px-12 lg:pl-80 py-10 flex flex-col md:flex-row justify-between items-center gap-6">
             <p class="text-[0.65rem] font-normal text-slate-400 uppercase tracking-widest text-center md:text-left">
                 © 2026 Caroline S. E. Nielsen · Copenhagen · Paris
             </p>
             <div class="flex flex-wrap justify-center gap-6 md:gap-10">
-                <a href="https://www.linkedin.com/in/caroline-sandholdt" target="_blank" rel="noopener" class="text-[0.65rem] font-normal text-slate-500 uppercase tracking-widest hover:text-slate-900 transition-colors relative after:absolute after:bottom-0 after:left-0 after:w-full after:h-[1px] after:bg-slate-300 after:origin-bottom-right after:scale-x-0 hover:after:scale-x-100 hover:after:origin-bottom-left after:transition-transform">
+                <a href="https://www.linkedin.com/in/caroline-sandholdt" target="_blank" rel="noopener" class="text-[0.65rem] font-normal text-slate-500 uppercase tracking-widest hover:text-slate-900 transition-colors">
                     LinkedIn
                 </a>
-                <a href="mailto:caroline10@live.dk" class="text-[0.65rem] font-normal text-slate-500 uppercase tracking-widest hover:text-slate-900 transition-colors relative after:absolute after:bottom-0 after:left-0 after:w-full after:h-[1px] after:bg-slate-300 after:origin-bottom-right after:scale-x-0 hover:after:scale-x-100 hover:after:origin-bottom-left after:transition-transform">
+                <a href="mailto:caroline10@live.dk" class="text-[0.65rem] font-normal text-slate-500 uppercase tracking-widest hover:text-slate-900 transition-colors">
                     Email
                 </a>
-                <a href="cv.html" target="_blank" rel="noopener" class="text-[0.65rem] font-normal text-slate-500 uppercase tracking-widest hover:text-slate-900 transition-colors relative after:absolute after:bottom-0 after:left-0 after:w-full after:h-[1px] after:bg-slate-300 after:origin-bottom-right after:scale-x-0 hover:after:scale-x-100 hover:after:origin-bottom-left after:transition-transform">
+                <a href="cv.html" target="_blank" rel="noopener" class="text-[0.65rem] font-normal text-slate-500 uppercase tracking-widest hover:text-slate-900 transition-colors">
                     Download CV
                 </a>
             </div>
@@ -419,8 +390,6 @@
     <script>
       // Graceful brand-mark fallback: if a logo image file isn't present,
       // replace it with a clean typographic wordmark so the layout stays intact.
-      // Drop the real PNGs (a51-logo.png, synapse-logo.png, techbbq-logo.png) into
-      // this folder and they show automatically.
       document.querySelectorAll('img[data-wordmark]').forEach(function (img) {
         img.addEventListener('error', function () {
           var mark = document.createElement('div');
