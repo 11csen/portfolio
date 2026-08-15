@@ -197,9 +197,23 @@
   body.in #controls.rise{ transition-delay:.30s; }
 
   @media (max-width:640px){
-    #controls{ top:calc(var(--pad) + 30px); bottom:auto; right:var(--pad); }
-    #info{ max-width:none; right:var(--pad); }
-    #pdesc{ max-width:none; }
+    :root{ --pad:18px; }
+    #controls{ top:calc(var(--pad) + 26px); bottom:auto; right:var(--pad); }
+    #info{ max-width:none; right:var(--pad); gap:11px; }
+    #pdesc{ max-width:none; font-size:0.98rem; }
+    #pname{ font-size:clamp(1.6rem, 7vw, 2.4rem); }
+    #eyebrow{ font-size:10px; letter-spacing:0.18em; }
+  }
+  /* short viewports: the embedded 16:9 frame on a phone, or a phone in landscape */
+  @media (max-height:460px){
+    #pdesc{ display:none; }
+    #chips{ display:none; }
+    #pname{ font-size:clamp(1.25rem, 6vw, 1.9rem); }
+    .legend{ width:104px; }
+    #eyebrow{ top:14px; left:14px; right:14px; }
+    #info{ bottom:14px; left:14px; gap:8px; }
+    #controls{ top:12px; bottom:auto; right:14px; }
+    #scrim-bottom{ height:60%; }
   }
 
   @media (prefers-reduced-motion: reduce){
