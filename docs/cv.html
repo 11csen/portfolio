@@ -117,6 +117,20 @@
     .entry { margin-bottom: 12px; }
     .sec.mt { margin-top: 20px; }
   }
+
+  /* ---------- mobile ---------- */
+  @media (max-width: 640px) {
+    body { padding: 0; }
+    .sheet { width: 100%; min-height: 0; box-shadow: none; }
+    .banner { flex-direction: column; text-align: center; align-items: center; padding: 30px 22px 26px; }
+    .banner-tag, .banner-contacts { max-width: 100%; }
+    .banner-contacts { justify-content: center; }
+    .body { grid-template-columns: 1fr; }
+    .col-main { padding: 26px 22px 20px; }
+    .col-rail { padding: 22px 22px 30px; border-left: none; border-top: 1px solid var(--line); background: #fff; }
+    .entry { grid-template-columns: 62px 1fr; gap: 12px; }
+    .backlink { left: 12px; bottom: 12px; }
+  }
 </style>
 </head>
 <body>
