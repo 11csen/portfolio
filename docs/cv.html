@@ -106,11 +106,16 @@
               padding: 7px 13px; border-radius: 999px; box-shadow: 0 2px 10px rgba(0,0,0,.12); }
   .backlink:hover { background: var(--accent); color: #fff; }
 
+  .pdf-btn { position: fixed; right: 18px; bottom: 16px; font-family: 'Libre Franklin', sans-serif;
+             font-size: 12px; font-weight: 600; color: #fff; background: var(--accent); border: 0;
+             cursor: pointer; padding: 8px 15px; border-radius: 999px; box-shadow: 0 2px 10px rgba(0,0,0,.16); }
+  .pdf-btn:hover { background: var(--accent-deep); }
+
   @media print {
     @page { size: A4 portrait; margin: 0; }
     html, body { background: #fff; padding: 0; margin: 0; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
     .sheet { box-shadow: none; width: 100%; min-height: 100vh; }
-    .backlink { display: none !important; }
+    .backlink, .pdf-btn { display: none !important; }
     .banner { padding: 28px 48px 24px; }
     .col-main { padding-top: 24px; padding-bottom: 22px; }
     .col-rail { padding-top: 24px; padding-bottom: 22px; }
@@ -130,6 +135,7 @@
     .col-rail { padding: 22px 22px 30px; border-left: none; border-top: 1px solid var(--line); background: #fff; }
     .entry { grid-template-columns: 62px 1fr; gap: 12px; }
     .backlink { left: 12px; bottom: 12px; }
+    .pdf-btn { right: 12px; bottom: 12px; }
   }
 </style>
 </head>
@@ -272,5 +278,6 @@
   </main>
 
   <a class="backlink" href="index.html">← Back to portfolio</a>
+  <button class="pdf-btn" onclick="window.print()">Save as PDF</button>
 </body>
 </html>
