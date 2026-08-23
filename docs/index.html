@@ -34,6 +34,20 @@
     width: 100%; height: 100%; padding: 1.5rem; opacity: 0.92;
   }
   @media print { nav.fixed { display: none !important; } }
+
+  /* ---------- scroll reveal ---------- */
+  /* .reveal is applied by JS only, so with JS off (or no IntersectionObserver)
+     nothing is ever hidden. Motion is opt-in via the media query below. */
+  @media (prefers-reduced-motion: no-preference) {
+    .reveal {
+      opacity: 0;
+      transform: translateY(26px);
+      transition: opacity .75s cubic-bezier(.22, 1, .36, 1),
+                  transform .75s cubic-bezier(.22, 1, .36, 1);
+      will-change: opacity, transform;
+    }
+    .reveal.is-visible { opacity: 1; transform: none; }
+  }
 </style>
 </head>
 <body class="bg-slate-50 text-slate-800 font-['Inter'] font-light antialiased selection:bg-blue-100 selection:text-blue-900 flex flex-col min-h-screen overflow-x-hidden">
@@ -393,5 +407,70 @@
         });
       });
     </script>
+
+<script>
+  /* Reveal each block as it scrolls into view. Purely progressive: if this
+     script never runs, or IntersectionObserver is missing, nothing is hidden. */
+  (function () {
+    "use strict";
+    if (!("IntersectionObserver" in window)) return;
+    if (window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+
+    var targets = [];
+    var sections = document.querySelectorAll("main > section");
+
+    Array.prototype.forEach.call(sections, function (sec) {
+      Array.prototype.forEach.call(sec.children, function (child) {
+        // Stagger the three skill cards individually rather than their grid wrapper.
+        if (child.children.length > 1 && /\bgrid\b/.test(child.className) && sec.id === "skills") {
+          Array.prototype.push.apply(targets, Array.prototype.slice.call(child.children));
+        } else {
+          targets.push(child);
+        }
+      });
+    });
+
+    // the rules between sections drift in too
+    Array.prototype.push.apply(
+      targets,
+      Array.prototype.slice.call(document.querySelectorAll("main > hr.section-divider"))
+    );
+
+    if (!targets.length) return;
+
+    targets.forEach(function (el) {
+      var siblings = el.parentNode ? el.parentNode.children : [el];
+      var i = Array.prototype.indexOf.call(siblings, el);
+      el.style.transitionDelay = (Math.min(i, 3) * 90) + "ms";
+      el.classList.add("reveal");
+    });
+
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (!entry.isIntersecting) return;
+        entry.target.classList.add("is-visible");
+        io.unobserve(entry.target);
+      });
+    }, { threshold: 0 });
+
+    targets.forEach(function (el) { io.observe(el); });
+
+    /* Safety net: an element sitting flush against the end of the document can
+       never scroll any further into view, so once we reach the bottom, reveal
+       whatever is still hidden. Nothing may stay invisible. */
+    function revealRemaining() {
+      var atBottom = window.innerHeight + window.scrollY >= document.body.scrollHeight - 2;
+      if (!atBottom) return;
+      targets.forEach(function (el) {
+        if (!el.classList.contains("is-visible")) {
+          el.classList.add("is-visible");
+          io.unobserve(el);
+        }
+      });
+      window.removeEventListener("scroll", revealRemaining);
+    }
+    window.addEventListener("scroll", revealRemaining, { passive: true });
+  })();
+</script>
 </body>
 </html>
