@@ -81,6 +81,32 @@
   @media (prefers-reduced-motion: reduce) {
     .logo-swap .logo-navy, .logo-swap .logo-brand { transition: none; }
   }
+
+  /* Even up the featured headings and the skill bullets so no card sits
+     ragged next to its neighbour. Each rule caps the type so the longest
+     string fits a known number of lines, then reserves exactly that many, and
+     sets line-height explicitly so the reserve is exact rather than
+     approximate. Only the widths that actually wrap unevenly are touched. */
+  @media (min-width: 1024px) {
+    #featured h3 { font-size: 2rem; line-height: 1.15; min-height: 2.3em; }
+  }
+  @media (max-width: 480px) {
+    #featured h3 { line-height: 1.15; min-height: 2.3em; }
+  }
+
+  /* three roomy columns: 13px keeps the longest bullet to two lines */
+  @media (min-width: 1024px) {
+    #skills li { font-size: 0.8125rem; line-height: 1.5; min-height: 3em; }
+  }
+  /* three cramped columns: even at 10.5px the longest bullet needs three
+     lines, so reserve three rather than shrink the type past legibility */
+  @media (min-width: 768px) and (max-width: 1023px) {
+    #skills li { font-size: 0.75rem; line-height: 1.5; min-height: 4.5em; }
+  }
+  /* one column: only the narrowest phones wrap onto a second line */
+  @media (max-width: 520px) {
+    #skills li { line-height: 1.5; min-height: 3em; }
+  }
 </style>
 </head>
 <body class="bg-slate-50 text-slate-800 font-['Inter'] font-light antialiased selection:bg-blue-100 selection:text-blue-900 flex flex-col min-h-screen overflow-x-hidden">
@@ -168,8 +194,8 @@
                 <article class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
                     <div class="lg:col-span-7 relative group rounded-2xl overflow-hidden aspect-[16/10] bg-white border border-slate-100 shadow-sm flex items-center justify-center">
                         <span class="logo-swap w-1/2 max-w-[280px]">
-                            <img src="amass-logo-navy.png" data-wordmark="Amass" alt="Amass logo" class="logo-navy">
-                            <img src="amass-logo.png" alt="" aria-hidden="true" class="logo-brand" onerror="this.remove()">
+                            <img src="amass-logo-navy.svg" data-wordmark="Amass" alt="Amass logo" class="logo-navy">
+                            <img src="amass-logo.svg" alt="" aria-hidden="true" class="logo-brand" onerror="this.remove()">
                         </span>
                     </div>
                     <div class="lg:col-span-5 flex flex-col items-start">
