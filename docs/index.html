@@ -94,10 +94,14 @@
     #featured h3 { line-height: 1.15; min-height: 2.3em; }
   }
 
-  /* "Duke of Edinburgh's Award" needs two lines where the other two titles
-     need one; reserve two for all three so the subtitles share a baseline */
-  @media (min-width: 768px) {
-    #awards-grid h5 { min-height: 2.75em; }
+  /* three columns only from 1024px, where the cell is wide enough to hold the
+     longest award title on one line; 15px is the largest size that fits it */
+  @media (min-width: 1024px) {
+    #awards-grid h5 { font-size: 0.9375rem; }
+  }
+  /* below 390px the single column is itself too narrow for 18px */
+  @media (max-width: 389px) {
+    #awards-grid h5 { font-size: 0.875rem; }
   }
 
   /* three roomy columns: 13px keeps the longest bullet to two lines */
@@ -358,14 +362,12 @@
                 <!-- Awards -->
                 <div class="md:col-span-4 bg-[var(--accent-wash)] rounded-2xl p-8 border border-[var(--accent-wash-border)]">
                     <span class="text-[0.65rem] text-[var(--accent)] uppercase tracking-widest mb-5 block">Awards</span>
-                    <div id="awards-grid" class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <div id="awards-grid" class="grid grid-cols-1 lg:grid-cols-3 gap-6">
                         <div>
-                            <h5 class="font-['Libre_Baskerville'] font-semibold text-lg tracking-tight text-slate-800 leading-snug">Academic book prize</h5>
-                            <p class="text-xs font-light text-slate-500 mt-1.5 leading-relaxed">2018 · Herlufsholm School</p>
+                            <h5 class="font-['Libre_Baskerville'] font-semibold text-lg tracking-tight text-slate-800 leading-snug">Academic book prize · 2018</h5>
                         </div>
                         <div>
-                            <h5 class="font-['Libre_Baskerville'] font-semibold text-lg tracking-tight text-slate-800 leading-snug">School prize</h5>
-                            <p class="text-xs font-light text-slate-500 mt-1.5 leading-relaxed">2015 · Herlufsholm School</p>
+                            <h5 class="font-['Libre_Baskerville'] font-semibold text-lg tracking-tight text-slate-800 leading-snug">School prize · 2015</h5>
                         </div>
                         <div>
                             <h5 class="font-['Libre_Baskerville'] font-semibold text-lg tracking-tight text-slate-800 leading-snug">Duke of Edinburgh&rsquo;s Award</h5>
