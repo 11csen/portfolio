@@ -94,6 +94,12 @@
     #featured h3 { line-height: 1.15; min-height: 2.3em; }
   }
 
+  /* "Duke of Edinburgh's Award" needs two lines where the other two titles
+     need one; reserve two for all three so the subtitles share a baseline */
+  @media (min-width: 768px) {
+    #awards-grid h5 { min-height: 2.75em; }
+  }
+
   /* three roomy columns: 13px keeps the longest bullet to two lines */
   @media (min-width: 1024px) {
     #skills li { font-size: 0.8125rem; line-height: 1.5; min-height: 3em; }
@@ -344,15 +350,28 @@
                 </div>
 
                 <!-- Languages -->
-                <div class="bg-[var(--accent)] rounded-2xl p-8 flex flex-col items-center justify-center text-center group shadow-md shadow-blue-900/10 border border-[var(--accent-hover)]">
+                <div class="md:col-span-2 bg-[var(--accent)] rounded-2xl p-8 flex flex-col items-center justify-center text-center group shadow-md shadow-blue-900/10 border border-[var(--accent-hover)]">
                     <span class="font-['Libre_Baskerville'] font-bold text-4xl text-white mb-2 group-hover:scale-105 transition-transform">DA·EN</span>
                     <span class="text-[0.65rem] uppercase tracking-widest text-white/70">Danish native · English fluent</span>
                 </div>
 
-                <!-- Award -->
-                <div class="bg-[var(--accent-wash)] rounded-2xl p-8 flex flex-col items-center justify-center text-center border border-[var(--accent-wash-border)]">
-                    <span class="font-['Libre_Baskerville'] font-bold text-5xl text-slate-800 mb-2">2018</span>
-                    <span class="text-[0.65rem] uppercase tracking-widest text-slate-500">Academic Book Prize · Herlufsholm</span>
+                <!-- Awards -->
+                <div class="md:col-span-4 bg-[var(--accent-wash)] rounded-2xl p-8 border border-[var(--accent-wash-border)]">
+                    <span class="text-[0.65rem] text-[var(--accent)] uppercase tracking-widest mb-5 block">Awards</span>
+                    <div id="awards-grid" class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                        <div>
+                            <h5 class="font-['Libre_Baskerville'] font-semibold text-lg tracking-tight text-slate-800 leading-snug">Academic book prize</h5>
+                            <p class="text-xs font-light text-slate-500 mt-1.5 leading-relaxed">2018 · Herlufsholm School</p>
+                        </div>
+                        <div>
+                            <h5 class="font-['Libre_Baskerville'] font-semibold text-lg tracking-tight text-slate-800 leading-snug">School prize</h5>
+                            <p class="text-xs font-light text-slate-500 mt-1.5 leading-relaxed">2015 · Herlufsholm School</p>
+                        </div>
+                        <div>
+                            <h5 class="font-['Libre_Baskerville'] font-semibold text-lg tracking-tight text-slate-800 leading-snug">Duke of Edinburgh&rsquo;s Award</h5>
+                            <p class="text-xs font-light text-slate-500 mt-1.5 leading-relaxed">Bronze</p>
+                        </div>
+                    </div>
                 </div>
 
             </section>
