@@ -97,6 +97,13 @@
   /* Each award sits in its own box sized to its title, so the boxes wrap onto
      as many rows as they need. The type steps down with the viewport so the
      longest title stays on one line; the ladder is measured, not guessed. */
+  /* Education lines must not wrap: the card is only two of four columns, so
+     the type steps down where the column is too narrow for the longest line
+     ("Master 2 exchange, Universite Paris Cite" and the B.Sc. line). */
+  @media (min-width: 768px) and (max-width: 1023px) { #edu-lines { font-size: 0.6875rem; } }
+  @media (max-width: 389px) { #edu-lines { font-size: 0.6875rem; } }
+  @media (max-width: 350px) { #edu-lines { font-size: 0.59375rem; } }
+
   #awards h5 { font-size: 0.9rem; }
   @media (max-width: 350px) { #awards h5 { font-size: 0.75rem; } }
 
@@ -342,9 +349,9 @@
                     <h5 class="font-['Libre_Baskerville'] font-semibold text-xl tracking-tight text-slate-800 relative z-10 pr-20">
                       M.Sc. Biochemistry · University of Copenhagen
                     </h5>
-                    <p class="text-xs font-light text-slate-500 mt-3 relative z-10 leading-relaxed">
+                    <p id="edu-lines" class="text-xs font-light text-slate-500 mt-3 relative z-10 leading-relaxed">
                         2025–26 · Master 2 exchange, Université Paris Cité<br>
-                        2020–24 · B.Sc. Biochemistry, University of Copenhagen<br>
+                        2020–24 · B.Sc. Biochemistry, Univ. of Copenhagen<br>
                         Herlufsholm School · finished third in year
                     </p>
                 </div>
